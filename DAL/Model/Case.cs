@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace DAL.Model {
     public class Case {
+        public Case() { }
     }
 }
