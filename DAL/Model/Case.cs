@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
-{
-    public class Class1
-    {
+namespace DAL.Model {
+    public class Case {
     }
 }
