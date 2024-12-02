@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Model {
-    public class Worker {
-        public Worker() { }
+namespace BLL.BLL {
+    public class EmployeeBLL{
     }
 }

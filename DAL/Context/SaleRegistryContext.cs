@@ -16,7 +16,7 @@ namespace DAL.Context {
         public DbSet<Case> Cases { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<TimeRegistration> TimeRegistrations { get; set; }
-        public DbSet<Worker> Workers { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {

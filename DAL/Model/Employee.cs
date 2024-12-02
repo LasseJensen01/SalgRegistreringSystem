@@ -6,16 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Model {
-    public class Case {
+    public class Employee {
 
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         // Links
-        public List<TimeRegistration> timeRegs { get; set; } = new List<TimeRegistration>();
         public Department Department { get; set; }
-        [ForeignKey("Department")]
+        [ForeignKey("Deparment")]
         public int DepartmentID { get; set; }
-        public Case() { }
+        public Employee() { }
     }
 }

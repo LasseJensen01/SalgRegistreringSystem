@@ -56,7 +56,7 @@
     <Compile Include="Model\Case.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\TimeRegistration.cs" />
-    <Compile Include="Model\Worker.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
