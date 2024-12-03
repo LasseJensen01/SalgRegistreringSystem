@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Model {
+namespace DTO.Model {
     public class Department {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -17,5 +17,8 @@ namespace DAL.Model {
             Name = name;
         }
         public Department() { }
+        public override string ToString() {
+            return Name;
+        }
     }
 }

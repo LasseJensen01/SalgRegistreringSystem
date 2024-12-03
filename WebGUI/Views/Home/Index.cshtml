@@ -2,8 +2,53 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="">
-    <h2>Here goes the index file</h2>
-</div>
+@model List<DTO.Model.Department>
+<body>
+
+    <div class="container">
+        <h1>Time Registration</h1>
+
+        <!-- Department Dropdown List -->
+        <div class="form-group">
+            <label for="department">Choosen Department: </label>
+            @Html.DropDownList("Departments")
+        </div>
+
+        <!-- Two Lists: Choose Case and Choose Employee -->
+        <div class="lists-container">
+            <div class="list-container">
+                <h2>Choose Case</h2>
+                <ul id="caseList">
+                    <!-- Example Cases, replace with dynamic content -->
+                    <li>Case 1</li>
+                    <li>Case 2</li>
+                    <li>Case 3</li>
+                </ul>
+            </div>
+
+            <div class="list-container">
+                <h2>Choose Employee</h2>
+                <ul id="employeeList">
+                    <!-- Example Employees, replace with dynamic content -->
+                    <li>Employee A</li>
+                    <li>Employee B</li>
+                    <li>Employee C</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Time Input and Submit Button -->
+        <div class="form-group">
+            <label for="timeRegistered">Time to Register (hours)</label>
+            <input type="number" id="timeRegistered" placeholder="Enter time" class="input-field" />
+        </div>
+
+        <div class="form-group">
+            <button onclick="" class="submit-btn">Submit</button>
+        </div>
+
+    </div>
+
+</body>
 
 

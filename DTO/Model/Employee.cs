@@ -5,21 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Model {
-    public class Case {
+namespace DTO.Model {
+    public class Employee {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         // Links
-        public List<TimeRegistration> timeRegs { get; set; } = new List<TimeRegistration>();
         public Department Department { get; set; }
-        [ForeignKey("Department")]
+        [ForeignKey("Deparment")]
         public int DepartmentID { get; set; }
-        public Case(string name, string description) {
+        public Employee(string name) {
             Name = name;
-            Description = description;
         }
-        public Case() { }
+        public Employee() { }
     }
 }
