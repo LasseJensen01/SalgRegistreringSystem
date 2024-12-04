@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace DTO.Model {
     public class Case {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         // Links
         public List<TimeRegistration> timeRegs { get; set; } = new List<TimeRegistration>();
         public Department Department { get; set; }
-        [ForeignKey("Department")]
-        public int DepartmentID { get; set; }
         public Case(string name, string description) {
             Name = name;
             Description = description;

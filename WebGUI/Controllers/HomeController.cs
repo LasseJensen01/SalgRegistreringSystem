@@ -12,6 +12,9 @@ namespace WebGUI.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            BLL.BLL.EmployeeBLL.GetEmployee(1);
+
+
             List<Department> d = new List<Department>();
             d.Add(new Department("1"));
             d.Add(new Department("2"));

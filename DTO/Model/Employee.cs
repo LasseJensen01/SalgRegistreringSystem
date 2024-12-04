@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace DTO.Model {
     public class Employee {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string Name { get; set; }
         // Links
