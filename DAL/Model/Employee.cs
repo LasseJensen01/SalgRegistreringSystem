@@ -10,11 +10,11 @@ namespace DAL.Model {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string Name { get; set; }
-        // Links
-        
-        public Department Department { get; set; }
+
+        //Foreignkey definition -> Department
         [ForeignKey("Department")]
-        public int DepartmentID { get; set; }
+        public int? DepartmentID { get; set; }
+        public Department Department { get; set; }
         public Employee(string name) {
             Name = name;
         }

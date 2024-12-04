@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Repositorie;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace DAL.Mapper {
         public static DTO.Model.Employee Map(Model.Employee employee) {
             DTO.Model.Employee mappedEmployee = new DTO.Model.Employee(employee.Name);
             mappedEmployee.ID = employee.ID;
-            mappedEmployee.DepartmentID = employee.DepartmentID;
+            // mappedEmployee.Department = DepartmentRepositorie.GetDepartment(employee.DepartmentID); Causes Stack overflow exception
             return mappedEmployee;
         }
         public static List<DTO.Model.Employee> Map(List<Model.Employee> employees) {

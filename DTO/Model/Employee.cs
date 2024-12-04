@@ -9,10 +9,7 @@ namespace DTO.Model {
     public class Employee {
         public int ID { get; set; }
         public string Name { get; set; }
-        // Links
         public Department Department { get; set; }
-        [ForeignKey("Deparment")]
-        public int DepartmentID { get; set; }
         public Employee(string name) {
             Name = name;
         }

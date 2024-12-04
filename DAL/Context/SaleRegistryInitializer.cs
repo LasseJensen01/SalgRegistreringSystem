@@ -14,13 +14,34 @@ namespace DAL.Context {
                 Name = "Production",
                 ID = 1
             };
+            Case gruntWork = new Case() {
+                Name = "Grunt Work",
+                Description = "Do gruntwork nerds"
+            };
+            prod.Cases.Add(gruntWork);
             Employee lucas = new Employee() {
                 Name = "Lucas",
-                ID = 1,
-                Department = prod,
+                Department = prod
             };
+            Employee lasse = new Employee() {
+                Name = "Lasse",
+                Department = prod
+            };
+            Employee simon = new Employee() {
+                Name = "Simon",
+                Department = prod
+            };
+            prod.Employees.Add(lucas);
+            prod.Employees.Add(lasse);
+            prod.Employees.Add(simon);
+            TimeRegistration tr = new TimeRegistration() {
+                Start = DateTime.Now,
+                End = DateTime.Now.AddHours(8),
+                Employee = lucas
+            };
+            gruntWork.timeRegs.Add(tr);
             context.Departments.Add(prod);
-            context.Employees.Add(lucas);
+            //context.Employees.Add(lucas);
 
 
             // Save changes and commit to Database

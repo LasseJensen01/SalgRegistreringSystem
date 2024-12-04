@@ -20,8 +20,39 @@ namespace DAL.Context {
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            // Employee -> Department (Many -> One)
+            modelBuilder.Entity<Employee>()
+                .HasOptional(e => e.Department)
+                .WithMany(d => d.Employees)
+                .HasForeignKey(e => e.DepartmentID)
+                .WillCascadeOnDelete(false);
+
+            //TimeRegistration -> Employee (Many -> One)
+            modelBuilder.Entity<TimeRegistration>()
+                .HasRequired(tr => tr.Employee)
+                .WithMany()
+                .HasForeignKey(tr => tr.EmployeeID)
+                .WillCascadeOnDelete(false);
+
+            //TimeRegistration -> Case (Many -> One)
+            modelBuilder.Entity<TimeRegistration>()
+                .HasOptional(tr => tr.Case)
+                .WithMany(c => c.timeRegs)
+                .HasForeignKey(tr => tr.CaseID)
+                .WillCascadeOnDelete(false);
+
+            //Case -> Department (Many to One)
+            modelBuilder.Entity<Case>()
+                .HasOptional(c => c.Department)
+                .WithMany(d => d.Cases)
+                .HasForeignKey(c => c.DepartmentID)
+                .WillCascadeOnDelete(false);
             // Remove the Pluralization before saving to the Database
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
+
+
+            
         }
     }
 }

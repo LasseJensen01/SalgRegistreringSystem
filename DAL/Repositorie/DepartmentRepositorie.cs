@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositorie {
     public static class DepartmentRepositorie {
-        public static DTO.Model.Department GetDepartment(int id) {
+        public static DTO.Model.Department GetDepartment(int? id) {
             using (SaleRegistryContext context = new SaleRegistryContext()) {
                 return Mapper.DepartmentMapper.Map(context.Departments.Find(id));
             }

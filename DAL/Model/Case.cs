@@ -11,11 +11,12 @@ namespace DAL.Model {
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        // Links
         public List<TimeRegistration> timeRegs { get; set; } = new List<TimeRegistration>();
-        public Department Department { get; set; }
+
+        //ForeignKeys -> Department
         [ForeignKey("Department")]
-        public int DepartmentID { get; set; }
+        public int? DepartmentID { get; set; }
+        public Department Department { get; set; }
         public Case(string name, string description) {
             Name = name;
             Description = description;
