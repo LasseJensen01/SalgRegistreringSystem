@@ -10,16 +10,16 @@
         <TabControl>
             <TabItem Header="Department">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox x:Name="DepartmentsLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,33,624,65"/>
+                    <ListBox x:Name="DepartmentsLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,36,624,62"/>
                     <Label Content="Departments" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="AddNewDepBTT" Content="Add New Department" HorizontalAlignment="Left" Margin="30,346,0,0" VerticalAlignment="Top" Click="AddNewDepBTT_Click"/>
-                    <TextBox x:Name="DepartmentNameTXTB" HorizontalAlignment="Left" Margin="186,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="DepartmentNameTXTB" HorizontalAlignment="Left" Margin="186,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Department Name" HorizontalAlignment="Left" Margin="186,10,0,0" VerticalAlignment="Top"/>
-                    <ListBox x:Name="DepatmentCasesLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="186,87,448,65"/>
+                    <ListBox x:Name="DepatmentCasesLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="186,90,448,62"/>
                     <Label Content="Cases" HorizontalAlignment="Left" Margin="186,61,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="AddNewCaseBTT" Content="Add New Case" HorizontalAlignment="Left" Margin="225,346,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522"/>
-                    <ListBox x:Name="TidsregistreringerLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="366,87,268,65"/>
-                    <Label Content="Tidsregistreringer" HorizontalAlignment="Left" Margin="366,61,0,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="TidsregistreringerLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="366,90,268,62"/>
+                    <Label Content="Time Registrations" HorizontalAlignment="Left" Margin="366,61,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="EmployeeCB" HorizontalAlignment="Left" Margin="545,88,0,0" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Employee" HorizontalAlignment="Left" Margin="545,62,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="StartTimeTXT" HorizontalAlignment="Left" Margin="545,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -30,7 +30,18 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Employee">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="EmployeesLB" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,36,626,72"/>
+                    <Label Content="Employees" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="AddEmployeeBTT" Content="Add Employee" HorizontalAlignment="Left" Margin="49,339,0,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="EmployeesLB_Copy" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="196,36,440,72"/>
+                    <Label Content="Time Registrations" HorizontalAlignment="Left" Margin="196,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Margin="377,36,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Margin="377,85,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Start Time" HorizontalAlignment="Left" Margin="377,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="End Time" HorizontalAlignment="Left" Margin="377,59,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="UpdateTimeRegistrationBTT" Content="Update" HorizontalAlignment="Left" Margin="416,114,0,0" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
         </TabControl>
 
