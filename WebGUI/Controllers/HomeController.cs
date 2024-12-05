@@ -42,32 +42,40 @@ namespace WebGUI.Controllers
 
 
         [HttpPost]
-        public ActionResult SubmitTimeRegistration(string startTime, DateTime? startDate, string endTime, DateTime? endDate, int? selectedEmployeeID, int? selectedDepartmentID, int? selectedCaseID) {
+        public ActionResult SubmitTimeRegistration(string startTime, DateTime? startDate, string endTime, DateTime? endDate, int? selectedEmployeeID, int? selectedCaseID) {
+
+            //Define Viewmodel from start in case of errors
+
+            List<Department> d = BLL.BLL.DepartmentBLL.GetDepartments();
+            int selectedDepartmentID = d.FirstOrDefault().ID;
+            var viewModel = new DepartmentViewModel() {
+                Cases = BLL.BLL.CaseBLL.GetCasesByDepID(selectedDepartmentID),
+                Employees = BLL.BLL.EmployeeBLL.GetEmployeesByDepID(selectedDepartmentID),
+                Departments = d,
+                Errormsg = ""
+            };
+            //Checks if Empoyee and case has been checked and arent null
+            if (selectedEmployeeID == null || selectedCaseID == null) {
+                viewModel.Errormsg = "Error: Employee or Case not checked";
+                return View("Index", viewModel);
+            }
+
+            // Check and parse times
             if (startDate.HasValue && !string.IsNullOrEmpty(startTime) &&
                 endDate.HasValue && !string.IsNullOrEmpty(endTime)) {
                 DateTime start = ParseTotalDateTime(startTime, startDate);
                 DateTime end = ParseTotalDateTime(endTime, endDate);
+                //Checks if datetime is a valid input
                 if (start > end) {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Naughty"); // Change to have Viewmodel
-                    // An error property and simply return the view before BLL Calls to notify bad request nad update
-                    // Error Labels
+                    viewModel.Errormsg = "Error: Invalid datetime";
+                    return View("Index",viewModel);
                 }
                 Employee e = BLL.BLL.EmployeeBLL.GetEmployee(selectedEmployeeID.Value);
                 Case c = BLL.BLL.CaseBLL.GetCase(selectedCaseID.Value);
                 BLL.BLL.TimeRegistrationBLL.AddTimeRegistration(start, end, e, c);
             }
 
-            List<Department> d = BLL.BLL.DepartmentBLL.GetDepartments();
             ViewBag.Departments = new SelectList(d, "Name");
-
-            selectedDepartmentID = d.FirstOrDefault().ID;
-
-            var viewModel = new DepartmentViewModel() {
-                Cases = BLL.BLL.CaseBLL.GetCasesByDepID(selectedDepartmentID.Value),
-                Employees = BLL.BLL.EmployeeBLL.GetEmployeesByDepID(selectedDepartmentID.Value),
-                Departments = d
-            };
-
             return View("Index", viewModel);
         }
 

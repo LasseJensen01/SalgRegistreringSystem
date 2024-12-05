@@ -21,5 +21,9 @@ namespace WPFApp {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void AddNewDepBTT_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
 }

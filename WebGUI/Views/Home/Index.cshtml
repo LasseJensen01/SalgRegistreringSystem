@@ -50,13 +50,12 @@
                         <label class="label-pick">Pick start date and time</label>
                         <input name="startDate" id="startDate" type="date" class="input-field" required />
                         <select name="startTime" id="startTime" placeholder="Enter start time" class="select-time" required></select>
-                        <label class="errorlabel"></label>
+                        <label class="errorlabel">@Model.Errormsg</label>
                     </div>
                     <div class="list-container">
                         <label class="label-pick">Pick end date and time</label>
                         <input name="endDate" id="endDate" type="date" class="input-field" required />
                         <select name="endTime" id="endTime" placeholder="Enter end time" class="select-time" required></select>
-                        <label class="errorlabel"></label>
                     </div>
                 </div>
             </div>

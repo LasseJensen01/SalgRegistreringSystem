@@ -9,5 +9,6 @@ namespace WebGUI.Views.ViewModels {
         public List<DTO.Model.Department> Departments { get; set; }
         public List<DTO.Model.Employee> Employees { get; set; }
         public List<DTO.Model.Case> Cases { get; set; }
+        public string Errormsg { get; set; } = "";
     }
 }
