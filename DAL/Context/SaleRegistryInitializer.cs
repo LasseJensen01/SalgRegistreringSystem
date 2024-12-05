@@ -13,9 +13,11 @@ namespace DAL.Context {
             Department prod = new Department() {
                 Name = "Production",
             };
+            prod.Cases.Add(new Case("Default", "Default"));
             Department manage = new Department() {
                 Name = "Management",
             };
+            manage.Cases.Add(new Case("Default", "Default"));
             Case gruntWork = new Case() {
                 Name = "Grunt Work",
                 Description = "Do gruntwork nerds"
@@ -33,9 +35,14 @@ namespace DAL.Context {
                 Name = "Simon",
                 Department = prod
             };
+            Employee peter = new Employee() {
+                Name = "Peter",
+                Department = manage
+            };
             prod.Employees.Add(lucas);
             prod.Employees.Add(lasse);
             prod.Employees.Add(simon);
+            manage.Employees.Add(peter);
             TimeRegistration tr = new TimeRegistration() {
                 Start = DateTime.Now,
                 End = DateTime.Now.AddHours(8),
