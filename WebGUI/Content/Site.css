@@ -61,6 +61,14 @@ h1 {
     flex: 1;
     margin: 0 10px;
 }
+.errorlabel {
+    color: red;
+    margin-left: 5px;
+}
+.label-pick {
+    color: #333;
+    margin-left: 5px;
+}
 
 h2 {
     text-align: center;
@@ -81,6 +89,9 @@ li {
     border: 1px solid #ddd;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+}
+.selected-li{
+    background-color: dodgerblue;
 }
 
     li:hover {
@@ -133,6 +144,12 @@ select {
     border-radius: 4px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
     transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition effect */
+}
+.select-time {
+    width: 100%;
+    padding: 5px;
+    font-size: 20px;
+
 }
 
 /* Media Query for Mobile Devices */

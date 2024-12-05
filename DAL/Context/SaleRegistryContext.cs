@@ -30,7 +30,7 @@ namespace DAL.Context {
             //TimeRegistration -> Employee (Many -> One)
             modelBuilder.Entity<TimeRegistration>()
                 .HasRequired(tr => tr.Employee)
-                .WithMany()
+                .WithMany() // <-- Allows for TimeRegistration to be saved on employees too
                 .HasForeignKey(tr => tr.EmployeeID)
                 .WillCascadeOnDelete(false);
 

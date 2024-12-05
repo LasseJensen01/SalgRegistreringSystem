@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Mapper {
     public static class TimeRegistrationMapper {
-        private static DTO.Model.TimeRegistration Map(Model.TimeRegistration tr) {
+        public static DTO.Model.TimeRegistration Map(Model.TimeRegistration tr) {
             return new DTO.Model.TimeRegistration() {
                 ID = tr.ID,
                 Start = tr.Start,
@@ -21,7 +21,7 @@ namespace DAL.Mapper {
             }
             return mappedTRs;
         }
-        private static Model.TimeRegistration Map(DTO.Model.TimeRegistration tr) {
+        public static Model.TimeRegistration Map(DTO.Model.TimeRegistration tr) {
             return new Model.TimeRegistration() {
                 ID = tr.ID,
                 Start = tr.Start,

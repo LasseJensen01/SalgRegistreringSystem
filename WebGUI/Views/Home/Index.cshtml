@@ -2,53 +2,71 @@
 @{
     ViewBag.Title = "Index";
 }
-@model List<DTO.Model.Department>
-<body>
+@model WebGUI.Views.ViewModels.DepartmentViewModel
 
+<script src="~/Content/Index.js" type="module" defer></script>
+<body>
     <div class="container">
         <h1>Time Registration</h1>
-
-        <!-- Department Dropdown List -->
-        <div class="form-group">
-            <label for="department">Choosen Department: </label>
-            @Html.DropDownList("Departments")
-        </div>
-
-        <!-- Two Lists: Choose Case and Choose Employee -->
-        <div class="lists-container">
-            <div class="list-container">
-                <h2>Choose Case</h2>
-                <ul id="caseList">
-                    <!-- Example Cases, replace with dynamic content -->
-                    <li>Case 1</li>
-                    <li>Case 2</li>
-                    <li>Case 3</li>
-                </ul>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post)) {
+            <!-- Department Dropdown List -->
+            <div class="form-group">
+                <label for="department">Choosen Department: </label>
+                @Html.DropDownListFor(m => m.SelectedDepartmentId, new SelectList(Model.Departments, "ID", "Name", Model.SelectedDepartmentId))
             </div>
 
-            <div class="list-container">
-                <h2>Choose Employee</h2>
-                <ul id="employeeList">
-                    <!-- Example Employees, replace with dynamic content -->
-                    <li>Employee A</li>
-                    <li>Employee B</li>
-                    <li>Employee C</li>
-                </ul>
+            <div>
+                <input type="submit" value="Submit" />
             </div>
-        </div>
+        }
 
-        <!-- Time Input and Submit Button -->
-        <div class="form-group">
-            <label for="timeRegistered">Time to Register (hours)</label>
-            <input type="number" id="timeRegistered" placeholder="Enter time" class="input-field" />
-        </div>
+        @using (Html.BeginForm("SubmitTimeRegistration", "Home", FormMethod.Post)) {
+            <div class="lists-container">
+                <div class="list-container">
+                    <h2>Choose Case</h2>
+                    <ul id="caseList">
+                        @foreach (var c in Model.Cases) {
+                            <li data-id="@c.ID">@c.Name</li>
+                        }
+                    </ul>
+                    <input type="hidden" name="selectedCaseID" id="selectedCaseID" required />
+                </div>
 
-        <div class="form-group">
-            <button onclick="" class="submit-btn">Submit</button>
-        </div>
+                <div class="list-container">
+                    <h2>Choose Employee</h2>
+                    <ul id="employeeList">
+                        @foreach (var employee in Model.Employees) {
+                            <li data-id="@employee.ID">@employee.Name</li>
+                        }
+                    </ul>
+                    <input type="hidden" name="selectedEmployeeID" id="selectedEmployeeID" required />
+                </div>
+            </div>
 
+            <!-- Time Input and Submit Button -->
+            <div class="form-group">
+                <div class="lists-container">
+                    <div class="list-container">
+                        <label class="label-pick">Pick start date and time</label>
+                        <input name="startDate" id="startDate" type="date" class="input-field" required />
+                        <select name="startTime" id="startTime" placeholder="Enter start time" class="select-time" required></select>
+                        <label class="errorlabel"></label>
+                    </div>
+                    <div class="list-container">
+                        <label class="label-pick">Pick end date and time</label>
+                        <input name="endDate" id="endDate" type="date" class="input-field" required />
+                        <select name="endTime" id="endTime" placeholder="Enter end time" class="select-time" required></select>
+                        <label class="errorlabel"></label>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="selectedDepartmentID" id="selectedDepartmentID" required />
+
+            <div class="form-group">
+                <button id="submitBtt" type="submit" class="submit-btn">Submit</button>
+            </div>
+        }
     </div>
-
 </body>
 
 

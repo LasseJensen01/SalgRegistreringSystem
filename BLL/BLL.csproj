@@ -54,6 +54,7 @@
     <Compile Include="BLL\CaseBLL.cs" />
     <Compile Include="BLL\DepartmentBLL.cs" />
     <Compile Include="BLL\EmployeeBLL.cs" />
+    <Compile Include="BLL\TimeRegistrationBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,9 @@ namespace DAL.Context {
             // Init Data can be made here
             Department prod = new Department() {
                 Name = "Production",
-                ID = 1
+            };
+            Department manage = new Department() {
+                Name = "Management",
             };
             Case gruntWork = new Case() {
                 Name = "Grunt Work",
@@ -41,6 +43,7 @@ namespace DAL.Context {
             };
             gruntWork.timeRegs.Add(tr);
             context.Departments.Add(prod);
+            context.Departments.Add(manage);
             //context.Employees.Add(lucas);
 
 
