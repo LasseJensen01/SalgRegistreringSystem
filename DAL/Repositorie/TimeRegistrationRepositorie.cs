@@ -18,6 +18,7 @@ namespace DAL.Repositorie {
                 DAL.Model.TimeRegistration tr = Mapper.TimeRegistrationMapper.Map(timeRegistration);
                 context.TimeRegistrations.Add(tr);
                 context.Entry(tr.Case).State = System.Data.Entity.EntityState.Unchanged;
+                context.Entry(tr.Employee).State = System.Data.Entity.EntityState.Unchanged;
                 context.SaveChanges();
             }
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebGUI.Views.ViewModels;
@@ -46,6 +47,11 @@ namespace WebGUI.Controllers
                 endDate.HasValue && !string.IsNullOrEmpty(endTime)) {
                 DateTime start = ParseTotalDateTime(startTime, startDate);
                 DateTime end = ParseTotalDateTime(endTime, endDate);
+                if (start > end) {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Naughty"); // Change to have Viewmodel
+                    // An error property and simply return the view before BLL Calls to notify bad request nad update
+                    // Error Labels
+                }
                 Employee e = BLL.BLL.EmployeeBLL.GetEmployee(selectedEmployeeID.Value);
                 Case c = BLL.BLL.CaseBLL.GetCase(selectedCaseID.Value);
                 BLL.BLL.TimeRegistrationBLL.AddTimeRegistration(start, end, e, c);
