@@ -1,4 +1,5 @@
-﻿using DTO.Model;
+﻿using DAL.Repositorie;
+using DTO.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,10 @@ namespace BLL.BLL {
 
         public static Case GetCase(int id) {
             return DAL.Repositorie.CaseRepositorie.GetCase(id);
+        }
+
+        public static void CreateCase(string name, string description, int depID) {
+            CaseRepositorie.CreateCase(name, description, depID);
         }
     }
 }

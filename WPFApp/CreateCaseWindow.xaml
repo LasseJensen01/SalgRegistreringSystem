@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="CreateCaseWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="CreateCaseWindow" Height="287" Width="279">
+    <Grid Background="#FFE5E5E5">
+        <TextBox x:Name="NameTXT" HorizontalAlignment="Left" Margin="84,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="DescriptionTXT" HorizontalAlignment="Left" Margin="84,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="69"/>
+        <ComboBox x:Name="DepartmentCB" HorizontalAlignment="Left" Margin="84,34,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="CreateBTT" Content="Create" HorizontalAlignment="Left" Margin="124,191,0,0" VerticalAlignment="Top" Click="Button_Click"/>
     </Grid>
 </Window>

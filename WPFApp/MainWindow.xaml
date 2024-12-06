@@ -21,7 +21,7 @@
                     <Label Content="Department Name" HorizontalAlignment="Left" Margin="186,10,0,0" VerticalAlignment="Top"/>
                     <ListBox x:Name="DepatmentCasesLB" IsSynchronizedWithCurrentItem="True" Margin="186,90,448,62" SelectionChanged="DepatmentCasesLB_SelectionChanged"/>
                     <Label Content="Cases" HorizontalAlignment="Left" Margin="186,61,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="AddNewCaseBTT" Content="Add New Case" HorizontalAlignment="Left" Margin="225,346,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522"/>
+                    <Button x:Name="AddNewCaseBTT" Content="Add New Case" HorizontalAlignment="Left" Margin="225,346,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522" Click="AddNewCaseBTT_Click"/>
                     <ListBox x:Name="TimeRegistrationLB" IsSynchronizedWithCurrentItem="True" Margin="366,149,268,62" SelectionChanged="TimeRegistrationLB_SelectionChanged"/>
                     <Label Content="Time Registrations" HorizontalAlignment="Left" Margin="366,123,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="EmployeeCB" HorizontalAlignment="Left" Margin="544,175,0,0" VerticalAlignment="Top" Width="120"/>
@@ -41,7 +41,7 @@
                 <Grid Background="#FFE5E5E5">
                     <ListBox x:Name="EmployeesLB" IsSynchronizedWithCurrentItem="True" Margin="10,36,626,72" SelectionChanged="EmployeesLB_SelectionChanged"/>
                     <Label Content="Employees" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="AddEmployeeBTT" Content="Add Employee" HorizontalAlignment="Left" Margin="49,339,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="AddEmployeeBTT" Content="Add Employee" HorizontalAlignment="Left" Margin="49,339,0,0" VerticalAlignment="Top" Click="AddEmployeeBTT_Click"/>
                     <ListBox x:Name="TimeRegistrationLB2" IsSynchronizedWithCurrentItem="True" Margin="371,36,265,72" SelectionChanged="TimeRegistrationLB2_SelectionChanged"/>
                     <Label Content="Time Registrations" HorizontalAlignment="Left" Margin="371,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.51,0.296"/>
                     <TextBox x:Name="StartTimeTXT2" HorizontalAlignment="Left" Margin="541,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -49,14 +49,18 @@
                     <Label Content="Start Time" HorizontalAlignment="Left" Margin="541,38,0,0" VerticalAlignment="Top"/>
                     <Label Content="End Time" HorizontalAlignment="Left" Margin="541,87,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="UpdateTimeRegistrationBTT" Content="Update" HorizontalAlignment="Left" Margin="580,142,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="EmployeeNameTXT" HorizontalAlignment="Left" Margin="186,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Label Content="Name" HorizontalAlignment="Left" Margin="186,36,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="DepartmentCB" HorizontalAlignment="Left" Margin="186,108,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Label Content="Department" HorizontalAlignment="Left" Margin="186,85,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="EmployeeNameTXT_Copy" HorizontalAlignment="Left" Margin="186,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <RadioButton Content="" HorizontalAlignment="Left" Margin="348,39,0,0" VerticalAlignment="Top"/>
-                    <RadioButton Content="" HorizontalAlignment="Left" Margin="348,56,0,0" VerticalAlignment="Top"/>
-                    <RadioButton HorizontalAlignment="Left" Margin="348,75,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="EmployeeNameTXT" HorizontalAlignment="Left" Margin="173,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="173,33,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="DepartmentCB" HorizontalAlignment="Left" Margin="173,105,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Department" HorizontalAlignment="Left" Margin="173,82,0,0" VerticalAlignment="Top"/>
+                    <RadioButton x:Name="WeekRB" Content="" HorizontalAlignment="Left" Margin="348,39,0,0" VerticalAlignment="Top" Checked="WeekRB_Checked"/>
+                    <RadioButton x:Name="MonthRB" Content="" HorizontalAlignment="Left" Margin="348,62,0,0" VerticalAlignment="Top" Checked="MonthRB_Checked"/>
+                    <RadioButton x:Name="TotalRB" HorizontalAlignment="Left" Margin="348,88,0,0" VerticalAlignment="Top" Checked="TotalRB_Checked"/>
+                    <Label Content="Week:" HorizontalAlignment="Left" Margin="310,31,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Month:" HorizontalAlignment="Left" Margin="304,54,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Total:" HorizontalAlignment="Left" Margin="312,80,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="TotalWorkTimeLBL" Content="10 Hr 10 Min" HorizontalAlignment="Left" Margin="284,134,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Sum:" HorizontalAlignment="Left" Margin="248,134,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>

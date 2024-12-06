@@ -1,4 +1,5 @@
 ﻿using DAL.Model;
+using DAL.Repositorie;
 using DTO.Model;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ namespace BLL.BLL {
     public static class DepartmentBLL {
         public static List<DTO.Model.Department> GetDepartments() {
             return DAL.Repositorie.DepartmentRepositorie.GetDepartments();
+        }
+        public static void CreateDepartment(string name) {
+            DepartmentRepositorie.CreateDepartment(name);
         }
     }
 }

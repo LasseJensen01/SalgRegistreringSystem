@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositorie {
     public static class EmployeeRepositorie {
-        public static void AddEmployee(DTO.Model.Employee employee) {
-            Employee newEmployee = Mapper.EmployeeMapper.Map(employee);
+        public static void AddEmployee(string name, int depID) {
             using (SaleRegistryContext context = new SaleRegistryContext()) {
-                context.Employees.Add(newEmployee);
+                var em = new Model.Employee(name);
+                em.DepartmentID = depID;
+                context.Employees.Add(em);
                 context.SaveChanges();
             }
         }

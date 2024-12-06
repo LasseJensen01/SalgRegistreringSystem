@@ -17,5 +17,13 @@ namespace DAL.Repositorie {
                 return Mapper.DepartmentMapper.Map(context.Departments.ToList());
             }
         }
+        public static void CreateDepartment(string name) {
+            using (SaleRegistryContext context = new SaleRegistryContext()) {
+                var dep = new Model.Department(name);
+                dep.Cases.Add(new Model.Case("Default", ""));
+                context.Departments.Add(dep);
+                context.SaveChanges();
+            }
+        }
     }
 }

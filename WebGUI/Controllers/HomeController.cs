@@ -70,6 +70,12 @@ namespace WebGUI.Controllers
                     viewModel.Errormsg = "Error: Invalid datetime";
                     return View("Index",viewModel);
                 }
+                TimeSpan sum = end - start;
+                //Checks if a timereg is above 1 day as such is invalid
+                if (sum.Days > 0) {
+                    viewModel.Errormsg = "Error: Timeregistrations limited to less than 24 hours";
+                    return View("Index", viewModel);
+                }
                 Employee e = BLL.BLL.EmployeeBLL.GetEmployee(selectedEmployeeID.Value);
                 Case c = BLL.BLL.CaseBLL.GetCase(selectedCaseID.Value);
                 BLL.BLL.TimeRegistrationBLL.AddTimeRegistration(start, end, e, c);

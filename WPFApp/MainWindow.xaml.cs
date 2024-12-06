@@ -24,7 +24,8 @@ namespace WPFApp {
         public static ObservableCollection<DTO.Model.Case> cs = new ObservableCollection<DTO.Model.Case>();
         public static ObservableCollection<DTO.Model.TimeRegistration> tRegs = new ObservableCollection<TimeRegistration>();
         public static ObservableCollection<DTO.Model.Employee> employees = new ObservableCollection<Employee>();
-        public DTO.Model.Department CurrentDep;
+        public static DTO.Model.Department CurrentDep = deps.FirstOrDefault();
+        public static DTO.Model.Case CurrentCase = cs.FirstOrDefault();
 
         public MainWindow() {
             InitializeComponent();
@@ -42,13 +43,31 @@ namespace WPFApp {
             //Binding for Employees -> Listbox
             EmployeesLB.DataContext = this;
             EmployeesLB.ItemsSource = employees;
+
+            TotalRB.IsChecked = true;
             
         }
-        public void UpdateLists() {
+        public static void UpdateLists() {
             var tempDep = BLL.BLL.DepartmentBLL.GetDepartments();
             deps.Clear();
             foreach (var dep in tempDep) {
                 deps.Add(dep);
+            }
+
+            if(CurrentDep != null) {
+                var tempCs = BLL.BLL.CaseBLL.GetCasesByDepID((CurrentDep as Department).ID);
+                cs.Clear();
+                foreach (var c in tempCs) {
+                    cs.Add(c);
+                }
+            }
+
+            if (CurrentCase != null) {
+                var tempTrgs = BLL.BLL.TimeRegistrationBLL.GetByCaseID((CurrentCase as Case).ID);
+                tRegs.Clear();
+                foreach (var c in tempTrgs) {
+                    tRegs.Add(c);
+                }
             }
 
             var tempEmployees = BLL.BLL.EmployeeBLL.GetAllEmployees();
@@ -60,28 +79,33 @@ namespace WPFApp {
         }
 
         private void AddNewDepBTT_Click(object sender, RoutedEventArgs e) {
-
+            CreateDepartmentWindow cdw = new CreateDepartmentWindow();
+            cdw.Show();
         }
 
         private void DepartmentsLB_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             DTO.Model.Department dep = ((sender as ListBox).SelectedItem as DTO.Model.Department);
-            CurrentDep = dep;
-            CaseNameTXT.Text = "";
-            DepartmentNameTXTB.Text = dep.Name;
-            var tempCs = BLL.BLL.CaseBLL.GetCasesByDepID(dep.ID);
-            cs.Clear();
-            foreach (var c in tempCs) {
-                cs.Add(c);
+            if (dep != null) {
+                CurrentDep = dep;
+                CaseNameTXT.Text = "";
+                DepartmentNameTXTB.Text = dep.Name;
+                var tempCs = BLL.BLL.CaseBLL.GetCasesByDepID(dep.ID);
+                cs.Clear();
+                foreach (var c in tempCs) {
+                    cs.Add(c);
+                }
+                foreach (var c in cs) {
+                    Console.WriteLine(c);
+                }
             }
-            foreach(var c in cs) {
-                Console.WriteLine(c);
-            }
+            
             
         }
 
         private void DepatmentCasesLB_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var c = ((sender as ListBox).SelectedItem as DTO.Model.Case);
             if (c != null) {
+                CurrentCase = c;
                 var tempTRegs = BLL.BLL.TimeRegistrationBLL.GetByCaseID(c.ID);
                 CaseNameTXT.Text = c.Name;
                 tRegs.Clear();
@@ -122,6 +146,8 @@ namespace WPFApp {
         private void EmployeesLB_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var em = ((sender as ListBox).SelectedItem as Employee);
             if (em != null) {
+                TotalRB.IsChecked = false; // Retriggers TotalRB_Checked
+                TotalRB.IsChecked = true;
                 EmployeeNameTXT.Text = em.Name;
                 DepartmentCB.ItemsSource = deps;
                 Department dep = new Department();
@@ -146,6 +172,88 @@ namespace WPFApp {
                 StartTimeTXT2.Text = "";
                 EndTimeTXT2.Text = "";
             }
+        }
+
+        private void TotalRB_Checked(object sender, RoutedEventArgs e) {
+            
+                var em = EmployeesLB.SelectedItem as Employee;
+                if (em != null) {
+                    EmployeeNameTXT.Text = em.Name;
+                    DepartmentCB.ItemsSource = deps;
+                    Department dep = new Department();
+                    foreach (var de in deps) {
+                        if (em.DepartmentID == de.ID) {
+                            dep = de;
+                        }
+                    }
+                    DepartmentCB.SelectedItem = dep;
+
+                    var trRegs = BLL.BLL.TimeRegistrationBLL.GetByEmployeeID(em.ID);
+                    TimeSpan summedTime = TimeSpan.Zero;
+                    foreach(var tr in trRegs) {
+                    summedTime += tr.End - tr.Start;
+                    }
+                    TotalWorkTimeLBL.Content = summedTime.Hours + " Hr " + summedTime.Minutes + " Min";
+                    TimeRegistrationLB2.ItemsSource = trRegs;
+            }
+            
+        }
+
+        private void WeekRB_Checked(object sender, RoutedEventArgs e) {
+            var em = EmployeesLB.SelectedItem as Employee;
+            if (em != null) {
+                EmployeeNameTXT.Text = em.Name;
+                DepartmentCB.ItemsSource = deps;
+                Department dep = new Department();
+                foreach (var de in deps) {
+                    if (em.DepartmentID == de.ID) {
+                        dep = de;
+                    }
+                }
+                DepartmentCB.SelectedItem = dep;
+
+                DateTime filterItem = DateTime.Now.AddDays(-7);
+                var trRegs = BLL.BLL.TimeRegistrationBLL.GetByEmployeeID(em.ID).Where(tr => tr.Start > filterItem);
+                TimeSpan summedTime = TimeSpan.Zero;
+                foreach (var tr in trRegs) {
+                    summedTime += tr.End - tr.Start;
+                }
+                TotalWorkTimeLBL.Content = summedTime.Hours + " Hr " + summedTime.Minutes + " Min";
+                TimeRegistrationLB2.ItemsSource = trRegs;
+            }
+        }
+
+        private void MonthRB_Checked(object sender, RoutedEventArgs e) {
+            var em = EmployeesLB.SelectedItem as Employee;
+            if (em != null) {
+                EmployeeNameTXT.Text = em.Name;
+                DepartmentCB.ItemsSource = deps;
+                Department dep = new Department();
+                foreach (var de in deps) {
+                    if (em.DepartmentID == de.ID) {
+                        dep = de;
+                    }
+                }
+                DepartmentCB.SelectedItem = dep;
+                DateTime filterItem = DateTime.Now.AddDays(-30);
+                var trRegs = BLL.BLL.TimeRegistrationBLL.GetByEmployeeID(em.ID).Where(tr => tr.Start > filterItem);
+                TimeSpan summedTime = TimeSpan.Zero;
+                foreach (var tr in trRegs) {
+                    summedTime += tr.End - tr.Start;
+                }
+                TotalWorkTimeLBL.Content = summedTime.Hours + " Hr " + summedTime.Minutes + " Min";
+                TimeRegistrationLB2.ItemsSource = trRegs;
+            }
+        }
+
+        private void AddNewCaseBTT_Click(object sender, RoutedEventArgs e) {
+            CreateCaseWindow ccw = new CreateCaseWindow();
+            ccw.Show();
+        }
+
+        private void AddEmployeeBTT_Click(object sender, RoutedEventArgs e) {
+            CreateEmployeeWindow cew = new CreateEmployeeWindow();
+            cew.Show();
         }
     }
 }

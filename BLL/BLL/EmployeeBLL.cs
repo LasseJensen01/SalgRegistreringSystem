@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Repositorie;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,9 @@ namespace BLL.BLL {
         }
         public static List<DTO.Model.Employee> GetAllEmployees() {
             return DAL.Repositorie.EmployeeRepositorie.GetAllEmployees();
+        }
+        public static void CreateEmployee(string name, int depID) {
+            EmployeeRepositorie.AddEmployee(name, depID);
         }
     }
 }

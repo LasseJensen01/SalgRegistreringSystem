@@ -17,5 +17,13 @@ namespace DAL.Repositorie {
                 return Mapper.CaseMapper.Map(context.Cases.Where(c => c.DepartmentID == id).ToList());
             }
         }
+        public static void CreateCase(string name, string description, int depID) {
+            using (SaleRegistryContext context = new SaleRegistryContext()) {
+                var c = new Model.Case(name, description);
+                c.DepartmentID = depID;
+                context.Cases.Add(c);
+                context.SaveChanges();
+            }
+        }
     }
 }

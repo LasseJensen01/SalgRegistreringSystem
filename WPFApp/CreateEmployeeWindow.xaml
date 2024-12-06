@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="CreateEmployeeWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="CreateEmployeeWindow" Height="233" Width="263">
+    <Grid Background="#FFE5E5E5">
+        <ComboBox x:Name="DepartmentCB" HorizontalAlignment="Left" Margin="102,50,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NameTXT" HorizontalAlignment="Left" Margin="102,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="CreateBTT" Content="Create" HorizontalAlignment="Left" Margin="143,118,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+
     </Grid>
 </Window>
