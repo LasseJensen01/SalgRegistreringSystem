@@ -23,7 +23,7 @@ namespace WPFApp {
 
         private void CreateDepBTT_Click(object sender, RoutedEventArgs e) {
             string name = DepartNameTXT.Text;
-            if (name != null || name == "") {
+            if (!string.IsNullOrWhiteSpace(name)) {
                 BLL.BLL.DepartmentBLL.CreateDepartment(name);
                 MainWindow.UpdateLists();
                 this.Close();

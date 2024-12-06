@@ -32,6 +32,14 @@ namespace DAL.Repositorie {
                 return Mapper.EmployeeMapper.Map(context.Employees.ToList());
             }
         }
+        public static void UpdateEmployee(int empID, string name, int depID) {
+            using (SaleRegistryContext context = new SaleRegistryContext()) {
+                var emp = context.Employees.FirstOrDefault(e => e.ID == empID);
+                emp.Name = name;
+                emp.DepartmentID = depID;
+                context.SaveChanges();
+            }
+        }
 
     }
 }

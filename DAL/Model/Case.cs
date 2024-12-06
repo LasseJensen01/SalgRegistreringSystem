@@ -11,6 +11,7 @@ namespace DAL.Model {
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        // Links
         public List<TimeRegistration> timeRegs { get; set; } = new List<TimeRegistration>();
 
         //ForeignKeys -> Department

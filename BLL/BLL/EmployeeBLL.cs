@@ -19,5 +19,8 @@ namespace BLL.BLL {
         public static void CreateEmployee(string name, int depID) {
             EmployeeRepositorie.AddEmployee(name, depID);
         }
+        public static void UpdateEmployee(int empID, string name, int depID) {
+            EmployeeRepositorie.UpdateEmployee(empID, name, depID);
+        }
     }
 }

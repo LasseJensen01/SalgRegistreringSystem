@@ -1,5 +1,6 @@
 ﻿using DTO.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace WPFApp {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            if (NameTXT.Text != null || NameTXT.Text != "") {
+            if (!string.IsNullOrWhiteSpace(NameTXT.Text)) {
                 if (DescriptionTXT.Text != null) {
                     int depId = (DepartmentCB.SelectedItem as Department).ID;
                     BLL.BLL.CaseBLL.CreateCase(NameTXT.Text, DescriptionTXT.Text, depId);

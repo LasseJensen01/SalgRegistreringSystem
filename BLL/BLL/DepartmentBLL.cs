@@ -15,5 +15,8 @@ namespace BLL.BLL {
         public static void CreateDepartment(string name) {
             DepartmentRepositorie.CreateDepartment(name);
         }
+        public static void UpdateDepartment(string name, int depID) {
+            DepartmentRepositorie.UpdateDepartment(name, depID);
+        }
     }
 }

@@ -25,5 +25,12 @@ namespace DAL.Repositorie {
                 context.SaveChanges();
             }
         }
+        public static void UpdateCase(string name, int caseID) {
+            using (SaleRegistryContext context = new SaleRegistryContext()) {
+                var c = context.Cases.FirstOrDefault(ca => ca.ID == caseID);
+                c.Name = name;
+                context.SaveChanges();
+            }
+        }
     }
 }

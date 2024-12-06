@@ -40,6 +40,8 @@ namespace WPFApp {
             //Binding for TimeRegistration -> Listbox
             TimeRegistrationLB.DataContext = this;
             TimeRegistrationLB.ItemsSource = tRegs;
+            TimeRegistrationLB2.DataContext = this;
+            TimeRegistrationLB2.ItemsSource = tRegs;
             //Binding for Employees -> Listbox
             EmployeesLB.DataContext = this;
             EmployeesLB.ItemsSource = employees;
@@ -48,12 +50,13 @@ namespace WPFApp {
             
         }
         public static void UpdateLists() {
+            //Update Deps
             var tempDep = BLL.BLL.DepartmentBLL.GetDepartments();
             deps.Clear();
             foreach (var dep in tempDep) {
                 deps.Add(dep);
             }
-
+            // Update cases
             if(CurrentDep != null) {
                 var tempCs = BLL.BLL.CaseBLL.GetCasesByDepID((CurrentDep as Department).ID);
                 cs.Clear();
@@ -61,7 +64,7 @@ namespace WPFApp {
                     cs.Add(c);
                 }
             }
-
+            // update Timeregs
             if (CurrentCase != null) {
                 var tempTrgs = BLL.BLL.TimeRegistrationBLL.GetByCaseID((CurrentCase as Case).ID);
                 tRegs.Clear();
@@ -69,7 +72,7 @@ namespace WPFApp {
                     tRegs.Add(c);
                 }
             }
-
+            // Update Employees
             var tempEmployees = BLL.BLL.EmployeeBLL.GetAllEmployees();
             employees.Clear();
             foreach(var em in tempEmployees) {
@@ -235,7 +238,7 @@ namespace WPFApp {
                     }
                 }
                 DepartmentCB.SelectedItem = dep;
-                DateTime filterItem = DateTime.Now.AddDays(-30);
+                DateTime filterItem = DateTime.Now.AddMonths(-1);
                 var trRegs = BLL.BLL.TimeRegistrationBLL.GetByEmployeeID(em.ID).Where(tr => tr.Start > filterItem);
                 TimeSpan summedTime = TimeSpan.Zero;
                 foreach (var tr in trRegs) {
@@ -254,6 +257,58 @@ namespace WPFApp {
         private void AddEmployeeBTT_Click(object sender, RoutedEventArgs e) {
             CreateEmployeeWindow cew = new CreateEmployeeWindow();
             cew.Show();
+        }
+
+        private void UpdateDepNameBTT_Click(object sender, RoutedEventArgs e) {
+            if (!string.IsNullOrWhiteSpace(DepartmentNameTXTB.Text)) {
+                BLL.BLL.DepartmentBLL.UpdateDepartment(DepartmentNameTXTB.Text, (DepartmentsLB.SelectedItem as Department).ID);
+                UpdateLists();
+            }
+        }
+
+        private void UpdateCaseNameBTT_Click(object sender, RoutedEventArgs e) {
+            if (!string.IsNullOrWhiteSpace(CaseNameTXT.Text)) {
+                BLL.BLL.CaseBLL.UpdateCase(CaseNameTXT.Text, (DepatmentCasesLB.SelectedItem as Case).ID);
+                UpdateLists();
+            }
+        }
+
+        private void UpdateTimRegBTT_Click(object sender, RoutedEventArgs e) {
+            string start = StartTimeTXT.Text;
+            string end = EndTimeTXT.Text;
+            if (!string.IsNullOrWhiteSpace(start) && !string.IsNullOrWhiteSpace(end)) {
+                if (DateTime.TryParse(start, out DateTime parsedStart) && DateTime.TryParse(end, out DateTime parsedEnd)) {
+                    TimeSpan sum = parsedEnd - parsedStart;
+                    if (parsedStart < parsedEnd && sum.Days == 0) {
+                        BLL.BLL.TimeRegistrationBLL.Update((TimeRegistrationLB.SelectedItem as TimeRegistration).ID, parsedStart, parsedEnd, (EmployeeCB.SelectedItem as Employee).ID);
+                        UpdateLists();
+                    } 
+                }
+            }
+        }
+
+        private void UpdateTimeRegistrationBTT_Click(object sender, RoutedEventArgs e) {
+            string start = StartTimeTXT2.Text;
+            string end = EndTimeTXT2.Text;
+            if (!string.IsNullOrWhiteSpace(start) && !string.IsNullOrWhiteSpace(end)) {
+                if (DateTime.TryParse(start, out DateTime parsedStart) && DateTime.TryParse(end, out DateTime parsedEnd)) {
+                    TimeSpan sum = parsedEnd - parsedStart;
+                    if (parsedStart < parsedEnd && sum.Days == 0) {
+                        BLL.BLL.TimeRegistrationBLL.Update((TimeRegistrationLB2.SelectedItem as TimeRegistration).ID, parsedStart, parsedEnd, (EmployeesLB.SelectedItem as Employee).ID);
+                        UpdateLists();
+                    }
+                }
+            }
+        }
+
+        private void UpdateEmployeeBTT_Click(object sender, RoutedEventArgs e) {
+            string name = EmployeeNameTXT.Text;
+            if (!string.IsNullOrWhiteSpace(name)) {
+                int depID = (DepartmentCB.SelectedItem as Department).ID;
+                int empID = (EmployeesLB.SelectedItem as Employee).ID;
+                BLL.BLL.EmployeeBLL.UpdateEmployee(empID, name, depID);
+                UpdateLists();
+            }
         }
     }
 }

@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="CreateEmployeeWindow" Height="233" Width="263">
+        Title="CreateEmployeeWindow" Height="211" Width="230">
     <Grid Background="#FFE5E5E5">
-        <ComboBox x:Name="DepartmentCB" HorizontalAlignment="Left" Margin="102,50,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="NameTXT" HorizontalAlignment="Left" Margin="102,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="CreateBTT" Content="Create" HorizontalAlignment="Left" Margin="143,118,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <ComboBox x:Name="DepartmentCB" HorizontalAlignment="Left" Margin="80,49,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NameTXT" HorizontalAlignment="Left" Margin="80,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="CreateBTT" Content="Create" HorizontalAlignment="Left" Margin="121,117,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="31,84,0,0" VerticalAlignment="Top"/>
+        <Label Content="Department:" HorizontalAlignment="Left" Margin="4,47,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

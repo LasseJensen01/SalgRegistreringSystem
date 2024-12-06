@@ -30,11 +30,11 @@
                     <TextBox x:Name="EndTimeTXT" HorizontalAlignment="Left" Margin="544,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Start Time" HorizontalAlignment="Left" Margin="544,197,0,0" VerticalAlignment="Top"/>
                     <Label Content="End Time" HorizontalAlignment="Left" Margin="544,248,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="UpdateTimRegBTT" Content="Update" HorizontalAlignment="Left" Margin="583,301,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522"/>
-                    <Button x:Name="UpdateDepNameBTT" Content="Update Name" HorizontalAlignment="Left" Margin="316,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522"/>
+                    <Button x:Name="UpdateTimRegBTT" Content="Update" HorizontalAlignment="Left" Margin="583,301,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522" Click="UpdateTimRegBTT_Click"/>
+                    <Button x:Name="UpdateDepNameBTT" Content="Update Name" HorizontalAlignment="Left" Margin="316,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522" Click="UpdateDepNameBTT_Click"/>
                     <TextBox x:Name="CaseNameTXT" HorizontalAlignment="Left" Margin="366,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Case Name" HorizontalAlignment="Left" Margin="366,64,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="UpdateCaseNameBTT" Content="Update Name" HorizontalAlignment="Left" Margin="496,89,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522"/>
+                    <Button x:Name="UpdateCaseNameBTT" Content="Update Name" HorizontalAlignment="Left" Margin="496,89,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.522" Click="UpdateCaseNameBTT_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Employee">
@@ -48,7 +48,7 @@
                     <TextBox x:Name="EndTimeTXT2" HorizontalAlignment="Left" Margin="541,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Start Time" HorizontalAlignment="Left" Margin="541,38,0,0" VerticalAlignment="Top"/>
                     <Label Content="End Time" HorizontalAlignment="Left" Margin="541,87,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="UpdateTimeRegistrationBTT" Content="Update" HorizontalAlignment="Left" Margin="580,142,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="UpdateTimeRegistrationBTT" Content="Update" HorizontalAlignment="Left" Margin="580,142,0,0" VerticalAlignment="Top" Click="UpdateTimeRegistrationBTT_Click"/>
                     <TextBox x:Name="EmployeeNameTXT" HorizontalAlignment="Left" Margin="173,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Name" HorizontalAlignment="Left" Margin="173,33,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="DepartmentCB" HorizontalAlignment="Left" Margin="173,105,0,0" VerticalAlignment="Top" Width="120"/>
@@ -61,6 +61,7 @@
                     <Label Content="Total:" HorizontalAlignment="Left" Margin="312,80,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="TotalWorkTimeLBL" Content="10 Hr 10 Min" HorizontalAlignment="Left" Margin="284,134,0,0" VerticalAlignment="Top"/>
                     <Label Content="Sum:" HorizontalAlignment="Left" Margin="248,134,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="UpdateEmployeeBTT" Content="Update Employee" HorizontalAlignment="Left" Margin="184,160,0,0" VerticalAlignment="Top" Click="UpdateEmployeeBTT_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

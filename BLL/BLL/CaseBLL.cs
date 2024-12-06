@@ -19,5 +19,8 @@ namespace BLL.BLL {
         public static void CreateCase(string name, string description, int depID) {
             CaseRepositorie.CreateCase(name, description, depID);
         }
+        public static void UpdateCase(string name, int caseID) {
+            CaseRepositorie.UpdateCase(name, caseID);
+        }
     }
 }

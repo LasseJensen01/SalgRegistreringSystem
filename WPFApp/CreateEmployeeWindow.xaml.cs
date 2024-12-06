@@ -27,7 +27,7 @@ namespace WPFApp {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            if (NameTXT.Text != null || NameTXT.Text != "") {
+            if (!string.IsNullOrWhiteSpace(NameTXT.Text)) {
                 int depID = (DepartmentCB.SelectedItem as Department).ID;
                 BLL.BLL.EmployeeBLL.CreateEmployee(NameTXT.Text, depID);
                 MainWindow.UpdateLists();

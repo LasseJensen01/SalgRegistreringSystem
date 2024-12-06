@@ -25,7 +25,6 @@ namespace DAL.Mapper {
             DTO.Model.Employee mappedEmployee = new DTO.Model.Employee(employee.Name);
             mappedEmployee.ID = employee.ID;
             mappedEmployee.DepartmentID = employee.DepartmentID.Value;
-            // mappedEmployee.Department = DepartmentRepositorie.GetDepartment(employee.DepartmentID); Causes StackoverflowException
             return mappedEmployee;
         }
         public static List<DTO.Model.Employee> Map(List<Model.Employee> employees) {

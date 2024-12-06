@@ -20,5 +20,9 @@ namespace BLL.BLL {
         public static List<DTO.Model.TimeRegistration> GetByEmployeeID(int id) {
             return TimeRegistrationRepositorie.GetTimeRegsByEmployeeID(id);
         }
+
+        public static void Update(int trID, DateTime start, DateTime end, int employeeID) {
+            TimeRegistrationRepositorie.UpdateTimeReg(trID, start, end, employeeID);
+        }
     }
 }
