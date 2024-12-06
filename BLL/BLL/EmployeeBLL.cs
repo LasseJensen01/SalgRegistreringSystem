@@ -12,5 +12,8 @@ namespace BLL.BLL {
         public static List<DTO.Model.Employee> GetEmployeesByDepID(int id) {
             return DAL.Repositorie.EmployeeRepositorie.GetEmployeesByDeptID(id);
         }
+        public static List<DTO.Model.Employee> GetAllEmployees() {
+            return DAL.Repositorie.EmployeeRepositorie.GetAllEmployees();
+        }
     }
 }

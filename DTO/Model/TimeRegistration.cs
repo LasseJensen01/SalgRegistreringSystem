@@ -19,5 +19,10 @@ namespace DTO.Model {
             Employee = employee;
         }
         public TimeRegistration() { }
+
+        public override string ToString() {
+            TimeSpan time = End - Start;
+            return Employee.Name + ": " + time.Hours + " Hr " + time.Minutes + " Min";
+        }
     }
 }

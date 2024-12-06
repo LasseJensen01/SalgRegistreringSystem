@@ -22,5 +22,9 @@ namespace DAL.Model {
             Description = description;
         }
         public Case() { }
+
+        public override string ToString() {
+            return Name;
+        }
     }
 }

@@ -13,5 +13,12 @@ namespace BLL.BLL {
             tr.Case = c;
             TimeRegistrationRepositorie.AddTimeRegs(tr);
         }
+        public static List<DTO.Model.TimeRegistration> GetByCaseID(int id) {
+            return TimeRegistrationRepositorie.GetTimeRegsByCaseID(id);
+        }
+
+        public static List<DTO.Model.TimeRegistration> GetByEmployeeID(int id) {
+            return TimeRegistrationRepositorie.GetTimeRegsByEmployeeID(id);
+        }
     }
 }

@@ -26,5 +26,11 @@ namespace DAL.Repositorie {
                 return Mapper.EmployeeMapper.Map(context.Employees.Where(e => e.DepartmentID == ID).ToList());
             }
         }
+        public static List<DTO.Model.Employee> GetAllEmployees() {
+            using (SaleRegistryContext context = new SaleRegistryContext()) {
+                return Mapper.EmployeeMapper.Map(context.Employees.ToList());
+            }
+        }
+
     }
 }
